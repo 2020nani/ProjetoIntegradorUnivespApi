@@ -40,6 +40,10 @@ public class AreaRisco {
         return longitude;
     }
 
+    @Deprecated
+    public AreaRisco() {
+    }
+
     public AreaRisco(String name, Double latitude, Double longitude) {
         this.nome = name;
         this.latitude = latitude;
