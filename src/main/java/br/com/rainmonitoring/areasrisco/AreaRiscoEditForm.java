@@ -1,8 +1,8 @@
 package br.com.rainmonitoring.areasrisco;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 public class AreaRiscoEditForm {
 
@@ -12,8 +12,12 @@ public class AreaRiscoEditForm {
 
     private Double longitude;
 
+    private Integer indicePluvial;
 
-    public String getName() {
+    @Enumerated(EnumType.STRING)
+    private StatusRisco statusRisco;
+
+    public String getNome() {
         return nome;
     }
 
@@ -25,10 +29,12 @@ public class AreaRiscoEditForm {
         return longitude;
     }
 
-    public AreaRiscoEditForm(String nome, Double latitude, Double longitude) {
-        this.nome = nome;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Integer getIndicePluvial() {
+        return indicePluvial;
+    }
+
+    public StatusRisco getStatusRisco() {
+        return statusRisco;
     }
 
 
@@ -38,7 +44,9 @@ public class AreaRiscoEditForm {
         AreaRisco areaRiscoUpdate = new AreaRisco(
                 nome!= null ? nome : areaRisco.getNome(),
                 latitude!=null ? latitude : areaRisco.getLatitude(),
-                longitude!=null ? longitude : areaRisco.getLongitude()
+                longitude!=null ? longitude : areaRisco.getLongitude(),
+                indicePluvial!=null ? indicePluvial : areaRisco.getIndicePluvial(),
+                statusRisco!=null ? statusRisco : areaRisco.getStatusRisco()
         );
         return areaRiscoUpdate;
     }

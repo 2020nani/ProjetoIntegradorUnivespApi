@@ -1,5 +1,6 @@
 package br.com.rainmonitoring.usuario;
 
+import br.com.rainmonitoring.notificacaorisco.NotificacaoRisco;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -30,6 +31,9 @@ public class Usuario {
     @ElementCollection(fetch=FetchType.EAGER)
     @Enumerated(value = EnumType.STRING)
     private Set<Perfil> perfis = new HashSet<>();
+
+    @OneToOne(mappedBy = "usuario",cascade = CascadeType.MERGE)
+    private NotificacaoRisco notificacao;
 
     @Deprecated
     public Usuario() {

@@ -19,9 +19,21 @@ public class AreaRisco {
 
     @NotNull Double longitude;
 
+    @NotNull Integer indicePluvial;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private StatusRisco statusRisco;
+
+    private String nivelRisco;
+
 
     public Long getId() {
         return id;
+    }
+
+    public void setIndicePluvial(Integer indicePluvial) {
+        this.indicePluvial = indicePluvial;
     }
 
     public void setId(Long id) {
@@ -40,13 +52,28 @@ public class AreaRisco {
         return longitude;
     }
 
+    public Integer getIndicePluvial() {
+        return indicePluvial;
+    }
+
+    public StatusRisco getStatusRisco() {
+        return statusRisco;
+    }
+
+    public String getNivelRisco() {
+        return nivelRisco;
+    }
+
     @Deprecated
     public AreaRisco() {
     }
 
-    public AreaRisco(String name, Double latitude, Double longitude) {
-        this.nome = name;
+    public AreaRisco(String nome, Double latitude, Double longitude, Integer indicePluvial, StatusRisco statusRisco) {
+        this.nome = nome;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.indicePluvial = indicePluvial;
+        this.statusRisco = statusRisco;
+        this.nivelRisco = statusRisco.avaliarRisco(indicePluvial);
     }
 }

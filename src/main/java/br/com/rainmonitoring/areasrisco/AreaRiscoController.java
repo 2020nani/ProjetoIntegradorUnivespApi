@@ -1,9 +1,12 @@
 package br.com.rainmonitoring.areasrisco;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
@@ -27,6 +30,7 @@ public class AreaRiscoController {
     public ResponseEntity<AreaRisco> editarAreaRisco(@RequestBody @Valid AreaRiscoEditForm areaRiscoEditForm,
                                                      @PathVariable("areaId") Long areaId){
         AreaRisco areaRisco = areaRiscoEditForm.update(areaId, areaRiscoRepository);
+        areaRisco.setId(areaId);
         areaRiscoRepository.save(areaRisco);
         return ResponseEntity.ok(areaRisco);
     }
