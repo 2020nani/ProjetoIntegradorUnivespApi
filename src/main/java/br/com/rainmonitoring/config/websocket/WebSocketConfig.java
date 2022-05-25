@@ -1,5 +1,6 @@
 package br.com.rainmonitoring.config.websocket;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,6 +13,9 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @EnableWebSocketMessageBroker
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
+    @Value("${host.access.cors}")
+    private String hostAcess;
+
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic");
@@ -21,8 +25,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
        try {
-           registry.addEndpoint("/ws").setAllowedOrigins("*");
-           System.out.println("Deu bom");
+           registry.addEndpoint("/ws").setAllowedOrigins(hostAcess).withSockJS();
        }catch (Exception e){
            System.out.println("erro websocket");
        }

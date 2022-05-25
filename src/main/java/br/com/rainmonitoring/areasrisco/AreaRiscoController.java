@@ -48,4 +48,5 @@ public class AreaRiscoController {
         return ResponseEntity.ok(listAreaRisco);
     }
 
+
 }
