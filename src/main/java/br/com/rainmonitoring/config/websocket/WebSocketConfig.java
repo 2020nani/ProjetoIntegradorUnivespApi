@@ -25,7 +25,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
        try {
-           registry.addEndpoint("/ws").setAllowedOrigins(hostAcess).withSockJS();
+           registry.addEndpoint("/ws").setAllowedOrigins(hostAcess).setAllowedOriginPatterns(hostAcess).withSockJS();
            System.out.println(hostAcess);
        }catch (Exception e){
            System.out.println("erro websocket");
