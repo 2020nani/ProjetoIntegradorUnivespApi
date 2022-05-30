@@ -22,7 +22,7 @@ public class NotificacaoRiscoForm {
     private Long usuarioId;
 
     @NotNull
-    private Boolean isRead;
+    private String isRead;
 
     public Regiao getRegiao() {
         return regiao;
@@ -40,11 +40,11 @@ public class NotificacaoRiscoForm {
         return usuarioId;
     }
 
-    public Boolean getRead() {
+    public String getIsRead() {
         return isRead;
     }
 
-    public NotificacaoRiscoForm(Regiao regiao, String cidade, String descricao, Long usuarioId, Boolean isRead) {
+    public NotificacaoRiscoForm(Regiao regiao, String cidade, String descricao, Long usuarioId, String isRead) {
         this.regiao = regiao;
         this.cidade = cidade;
         this.descricao = descricao;

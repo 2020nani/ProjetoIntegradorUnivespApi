@@ -30,7 +30,7 @@ public class ScheduledSimulateApi {
     }
 
 
-    @Scheduled(cron = "0 0 0/10 * * *")
+    @Scheduled(cron = "0/30 * * * * *")
     @Transactional
     public String executar() {
         List<AreaRisco> areaRiscoList = areaRiscoRepository.findAll();

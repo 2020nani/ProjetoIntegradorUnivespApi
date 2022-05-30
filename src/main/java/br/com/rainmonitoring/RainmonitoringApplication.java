@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableScheduling
-@CrossOrigin("${host.access.cors}")
 public class RainmonitoringApplication {
 
 	public static void main(String[] args) {
