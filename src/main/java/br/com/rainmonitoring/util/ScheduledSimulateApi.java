@@ -29,7 +29,6 @@ public class ScheduledSimulateApi {
         this.areaRiscoRepository = areaRiscoRepository;
     }
 
-
     @Scheduled(cron = "0/30 * * * * *")
     @Transactional
     public String executar() {
